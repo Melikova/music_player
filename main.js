@@ -1,6 +1,6 @@
 const mp3_list = [
     {
-        id: 001,
+        id: 005,
         artist: "Emmanuel Moir",
         mp3: "2.mp3",
         name: 'Beau Malheur',
@@ -17,7 +17,7 @@ const mp3_list = [
     }
 ];
 
-let favorites_list = [001];
+let favorites_list = [];
 
 // Select all the elements in the HTML page
 // and assign them to a variable
@@ -35,12 +35,17 @@ let progress_time = document.querySelector('#progress_time');
 
 
 // Specify globally used values
-let current_track = {}; 
+let current_track = mp3_list[0]; 
 let isPlaying = false;
 
 // Function add to favorites
 function addToFav(){
-    favorites_list.push(current_track.id);
+    favorites_list.includes(current_track.id)? favorites_list.splice(favorites_list.indexOf(current_track.id), 1): favorites_list.push(current_track.id);
+    check_favs();
+}
+
+function check_favs(){
+    favorites_list.includes(current_track.id)? favorite.style.color='red': favorite.style.color='';
 }
 
 // Function to reset all values to their default
